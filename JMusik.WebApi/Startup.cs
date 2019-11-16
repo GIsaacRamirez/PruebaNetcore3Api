@@ -31,6 +31,10 @@ namespace JMusik.WebApi
             services.AddDbContext<TiendaDbContext>( options =>
                 { options.UseSqlServer(Configuration.GetConnectionString("TiendaDB")); }
             );
+
+            // Agregar a la inyeccion de dependencias la referencai aclas clases, se crea y se destruye en cada llamada
+            services.AddScoped<IRepositorioProductos, RepositorioProductos>();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
